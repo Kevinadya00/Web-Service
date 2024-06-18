@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Display News Articles from API -->
+        <div class="col-md-8">
+            <h1 class="mb-4">Berita Terbaru</h1>
+            {% for item in berita_api %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    {% if item.description %}
+                    <p class="card-text">{{ item.description }}</p>
+                    {% endif %}
+                    <p><a href="{{ item.url }}" class="btn btn-primary" target="_blank">Baca selengkapnya</a></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Display News Articles from Database -->
+        <div class="col-md-4">
+            <h1 class="mb-4">Artikel</h1>
+            <p><a href="{{ url_for('add_berita') }}" class="btn btn-success">Tambah Berita</a></p>
+            {% for berita in berita_db %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ berita[1] }}</h5>
+                    <p class="card-text">{{ berita[2][:100] }}...</p>
+                    <p>
+                        <a href="{{ url_for('detail_berita', id=berita[0]) }}" class="btn btn-primary">Baca Selengkapnya</a>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

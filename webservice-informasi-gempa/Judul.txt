@@ -1,0 +1,18 @@
+
+----- Web service Berita dan info gempa bumi -----
+
+
+CRUD => Menambahkan Artikel Berita 
+
+
+API gempa bumi => BMKG
+API Berita => News API
+
+
+RUN => Python app.py
+
+
+pip install Flask
+pip install Flask-MySQLdb
+pip install requests
+pip install Werkzeug

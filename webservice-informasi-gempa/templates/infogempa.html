@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mb-3">
+    <h1 class="text-center mb-auto">Data Gempa Terkini</h1>
+</div>
+{% if gempa_list %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Jam</th>
+            <th scope="col">Lintang</th>
+            <th scope="col">Bujur</th>
+            <th scope="col">Magnitude</th>
+            <th scope="col">Kedalaman</th>
+            <th scope="col">Wilayah</th>
+            <th scope="col">Potensi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for gempa in gempa_list %}
+        <tr>
+            <td>{{ gempa.Tanggal }}</td>
+            <td>{{ gempa.Jam }}</td>
+            <td>{{ gempa.Lintang }}</td>
+            <td>{{ gempa.Bujur }}</td>
+            <td>{{ gempa.Magnitude }}</td>
+            <td>{{ gempa.Kedalaman }}</td>
+            <td>{{ gempa.Wilayah }}</td>
+            <td>{{ gempa.Potensi }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    Data gempa tidak tersedia. Silakan coba lagi nanti.
+</div>
+{% endif %}
+</div>
+{% endblock %}
